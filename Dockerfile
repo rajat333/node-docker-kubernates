@@ -1,12 +1,14 @@
 # Specify a base image
 FROM node:alpine
 
-# WORKDIR /usr/app
+WORKDIR /usr/app
 
 # Install some depenendencies
 COPY ./ ./
-RUN npm install
-COPY ./ ./
+# COPY ./package.json ./
+RUN npm install  # Based on previous file system change it detect whether to install or not
+
+# COPY ./ ./
 
 # Default command
 CMD ["npm", "start"]
